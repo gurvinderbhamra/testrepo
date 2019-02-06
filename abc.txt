@@ -1,3 +1,9 @@
 hello this is a text file
+<<<<<<< HEAD
 welcome to github
 second changes
+=======
+changes made
+second change
+another change
+>>>>>>> newbranch

@@ -1,2 +1,6 @@
 hello this is a text file
+<<<<<<< HEAD
 this is second file
+=======
+changes made in branch
+>>>>>>> newbranch
