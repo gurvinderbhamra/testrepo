@@ -1,2 +1,3 @@
 hello this is a text file
-welcome to github
+changes made
+second change
