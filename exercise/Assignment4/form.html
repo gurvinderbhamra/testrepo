@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <style>
+
+            t
+            {
+                color: #626262;
+                font-family: "Abyssinica SIL";
+                font-size: 14px;
+
+            }
+
+            ul
+            {
+                list-style-type: none;
+                overflow: hidden;
+                padding: 0px;
+                display: inline;
+            }
+
+            li{
+                float: right;
+                margin-right: 100px;
+                margin-top: 20px;
+                font-size: 15px;
+                font-family: AnjaliOldLipi;
+                color: #00C79C;
+            }
+
+            .main_form
+            {
+                border-style: solid;
+                background-color: #ababab;
+                border-radius: 8px;;
+                border-color: #ababab;
+                margin: 20px 400px 20px 400px;
+            }
+
+            .dropdown
+            {
+                background-color: #00C79C;
+                border: solid 1px #00C79C;
+                color: white;
+                border-radius: 5px;
+                width: 95%;
+                height: 25px;
+                margin: 5px 0px 5px 0px
+            }
+
+            .send
+            {
+                margin: 10px 30px 10px 30px;
+                float: right;
+                background-color: #00C79C;
+                color: white;
+                width: 100px;
+                border: none;
+                height: 25px;
+                font-size: 16px;
+                font-weight: bold
+            }
+
+        </style>
+
+        <title>Form</title>
+
+    </head>
+
+    <body>
+        <div style="margin-top: 20px">
+
+            <p style="display: inline; font-size: 25px; color: #00C79C; margin-left: 100px; font-family: AnjaliOldLipi">
+                TO THE NEW
+            <ul>
+                <li>Quick Help</li>
+                <li>Home</li>
+            </ul>
+
+            </p>
+
+            <div style="height: 1px; background-color: darkgray; margin-right: 100px; margin-left: 100px"></div>
+
+        </div>
+
+        <form>
+            <div class="main_form"><br>
+
+                <span style="margin:20px 20px 10px 20px; font-weight: bold; color: white;font-size: 20px; font-family: Loma;">
+                    Bug Report
+                </span>
+
+
+                <div style="background-color: white; padding-left: 20px; margin-top: 20px; padding-top: 10px" >
+                    <t>Title:* </t><br>
+                    <input type="text" style="margin: 5px 0px 5px 0px; border: solid 1px lightgray; border-radius: 5px; width: 95%; height: 20px"/> <br>
+
+                    <t>Description:* </t><br>
+                    <textarea style="border:solid 1px lightgray; border-radius: 5px; margin: 5px 0px 5px 0px; width: 95%; height: 60px"></textarea><br>
+
+                    <t>Operating System:</t><br>
+                    <select class="dropdown">
+                        <option>Windows XP</option>
+                        <option>Linux</option>
+                    </select>
+                    <br>
+
+                    <t>Product:*</t><br>
+                    <select class="dropdown">
+                        <option>Formaid</option>
+                    </select>
+                    <br>
+
+                    <t>Version:*</t><br>
+                    <input type="text" style="border: solid 1px lightgray;
+                    margin: 5px 0px 5px 0px;
+                    border-radius: 5px;
+                    width: 30%;
+                    height: 20px"/> <br>
+
+                    <t>Licence:</t><br>
+                    <input type="radio" name="licence" style="margin-top: 5px"><t>Free</t>
+                    <input type="radio" name="licence" style="margin: 5px 0px 5px 150px"><t>Business</t>
+                    <br>
+
+                    <t>Security:</t><br>
+                    <select class="dropdown">
+                        <option>Critical</option>
+                    </select>
+                    <br>
+
+                    <t>Attachments:</t><br>
+                    <div>
+                        <span>
+                            <input type="file" style="margin: 5px 0px 5px 0px; ">
+                        </span>
+                    </div>
+
+                </div>
+
+                <div style="background-color: lightgray; width: 100%; height: 50px">
+                        <input type="button" value="Send" class="send">
+                </div>
+
+            </div>
+        </form>
+    </body>
+</html>
