@@ -1,0 +1,226 @@
+<html>
+
+    <head>
+
+        <style>
+            .buttons
+            {
+                background-color: #007CF0;
+                color: white;
+                width: 200px;
+                border: solid #007CF0;
+                border-radius: 5px;
+                font-weight: bold;
+                font-family: "Century Schoolbook L";
+            }
+        </style>
+
+        <script>
+            function calculate() {
+                var radius = prompt("Enter radius of circle here : ");
+                var area = 3.14 * radius * radius;
+                alert("Area of circle is " + area);
+            }
+
+            function calculateSI() {
+                var rate = prompt("Enter rate : ");
+                var principle = prompt("Enter principle : ");
+                var time = prompt("Enter time in years : ");
+
+                if(rate != "" && principle != "" && time != "")
+                {
+                    var si = (principle * rate * time)/100;
+                    document.getElementById("result").innerHTML = "Simple Interest is : " + si;
+                }
+                else
+                {
+                    alert("Enter all values...")
+                }
+            }
+            
+            function palindrome() {
+                var str = prompt("Enter a string ");
+                var str2 = "";
+                var i;
+                for(i = str.length-1; i >= 0; i--)
+                {
+                    str2 += str.charAt(i);
+                }
+                if(str == str2)
+                    document.getElementById("result").innerHTML = "String is palindrome";
+                else
+                    document.getElementById("result").innerHTML = "String is not palindrome";
+            }
+
+
+
+            function copyObject()
+            {
+                var copyObj = {};
+                var obj = {
+                    "name" : "abc",
+                    "id" : 1,
+                    "phone" : "1010",
+                    "address" : "Delhi"
+                };
+
+                var keys = Object.keys(obj);
+                var str = " " + keys + "<br>";
+                document.getElementById("keys").innerHTML = str + "<br>";
+
+                str="";
+                var key;
+                for(key in obj)
+                {
+                    str += copyObj[key] = obj[key] + ",";
+
+                }
+                document.getElementById("copyObj").innerHTML = str;
+                console.log(copyObj);
+            }
+
+
+            var arr = [ {
+                "name" : "abc",
+                "age" : 10,
+                "salary" : 10000,
+                "DOB" : "1-1-2010"
+            }, {
+                "name" : "abc",
+                "age" : 10,
+                "salary" : 6000,
+                "DOB" : "1-1-2010"
+            }, {
+                "name" : "abc",
+                "age" : 21,
+                "salary" : 800,
+                "DOB" : "1-1-2010"
+            }, {
+                "name" : "abcd",
+                "age" : 21,
+                "salary" : 900,
+                "DOB" : "2-2-2010"
+            }];
+
+            function listOfObjects()
+            {
+                    var i;
+                    var str = "";
+                    for(i = 0 ; i < arr.length ; i++)
+                        str += JSON.stringify(arr[i]) + "<br>";
+
+                    document.getElementById("objectList").innerHTML = str;
+
+                    for(i = 0 ; i < arr.length ; i++)
+                    {
+                        var salary = arr[i].salary;
+                        if(salary > 5000)
+                        {
+                            for(var key in arr[i])
+                            {
+                                // str += key.name + " " + key.age + " " + key.DOB;
+                            }
+                        }
+                    }
+            }
+
+            function filter1() {
+                var i;
+                var str="";
+                for(i = 0 ; i < arr.length ; i++)
+                {
+                    if(arr[i].salary > 5000)
+                    {
+                        str += JSON.stringify(arr[i]) + "<br>";
+                    }
+                }
+                document.getElementById("objectList").innerHTML = str;
+            }
+
+            function groupByAge() {
+                var list = {};
+                var i;
+                for(i = 0 ; i < arr.length ; i++)
+                {
+                    if(!list[arr[i].age])
+                    {
+                        list[arr[i].age] = [arr[i]];
+                    }
+                    else
+                    {
+                        list[arr[i].age].push(arr[i]);
+                    }
+                }
+                document.getElementById("objectList").innerHTML = JSON.stringify(list);
+            }
+
+            function filterAndIncrement() {
+                var i;
+                var list = [];
+                for(i = 0 ; i < arr.length ; i++)
+                {
+                    list.push(arr[i]);
+                    if(arr[i].age > 20 && arr[i]. salary < 1000)
+                    {
+                        list[i].salary *= 5;
+                    }
+                }
+
+                var str = "After increment : <br> " + JSON.stringify(list);
+                document.getElementById("objectList").innerHTML = str;
+            }
+        </script>
+
+        <title>Assignment 5</title>
+    </head>
+    <body bgcolor="black">
+        <div style="background-color: #787878; padding: 10px; color: white; margin: 30px 250px 30px 250px">
+           <table style="color: white; margin: 10px 150px 10px 150px">
+               <tr>
+                   <td>Calculate area of circle : </td>
+                   <td><input type="button" name="Area" class="buttons"  value="Area" onclick="calculate()"></td>
+               </tr>
+
+               <tr>
+                   <td>Calculate Simple Interest : </td>
+                   <td><input type="button" class="buttons"  name="Simple Interest" value="Simple Interest" onclick="calculateSI()"></td>
+               </tr>
+
+               <tr>
+                   <td>Check Palindrome : </td>
+                   <td><input type="button" class="buttons" name="Simple Interest" value="Check Palindrome" onclick="palindrome()"></td>
+               </tr>
+
+               <tr>
+                   <td>Copy Object in console : </td>
+                   <td><input type="button" class="buttons"  value="Copy Object" onclick="copyObject()"></td>
+               </tr>
+
+               <tr>
+                   <td>List of Objects : </td>
+                   <td><input type="button" class="buttons"  value="List of Objects" onclick="listOfObjects()"></td>
+               </tr>
+
+               <tr>
+                   <td>Employees with salary>5000 :</td>
+                   <td><input type="button" class="buttons"  value="Filter" onclick="filter1()"></td>
+               </tr>
+
+               <tr>
+                   <td>Group by age :</td>
+                   <td><input type="button" class="buttons"  value="Group By Age" onclick="groupByAge()"></td>
+               </tr>
+
+               <tr>
+                   <td>Filter and Increment :</td>
+                   <td><input type="button" class="buttons"  value="Filter and Increment" onclick="filterAndIncrement()"></td>
+               </tr>
+           </table>
+        </div>
+        <p align="center" style="color: white" id="keys"></p>
+        <p align="center" style="color: white" id="copyObj"></p>
+        <p align="center" style="color: white; font-size: 25px; font-family: 'fantasy'; font-weight: bold" id="result"></p>
+        <p align="center" style="color: white" id="objectList"></p>
+    </body>
+
+</html>
