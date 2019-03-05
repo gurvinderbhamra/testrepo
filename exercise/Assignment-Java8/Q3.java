@@ -5,8 +5,7 @@
 interface FuncInterface {
     void print(int x, int y);
 }
-
-public class Q3 {
+ class FunctionalInterfaceEx {
 
     private void add(int i, int i1) {
         System.out.println("Addition via non-static : " + (i + i1));
