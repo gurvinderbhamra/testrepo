@@ -1,0 +1,143 @@
+1) Look up java plugin documentation. Make changes in manifest to make it executable with correct class. When run using java -jar JAR_NAME_HERE the output should be text "Hello World" on the console.
+
+Ans. 'build.gradle':
+
+apply plugin:'java'
+
+sourceSets {
+    main{
+        java{
+            srcDirs = ['src/main/java']
+        }
+    }
+}
+jar{
+    manifest{
+        attributes "Main-Class": "com.intelligrape.gradle.Application"
+    }
+}
+
+Application.java:
+
+package com.intelligrape.gradle;
+
+public class Application {
+    public static void main(String[] args) {
+        System.out.println("Hello.. welcome to java gradle");
+    }
+}
+
+-----------------------------------------------------------------------------------------------
+
+2) look up idea plugin. make changes in build.gradle so that the sources of src/main/java as well as src/main/java2 are taken as sources. Ensure that when you make JAR file class files in both are added to the JAR. This will teach you how projects with non-conventional structure can be used with gradle.
+
+Ans. build.gradle:
+
+apply plugin:'java'
+
+sourceSets {
+    main{
+        java{
+            srcDirs = ['src/main/java','src/main/java2']
+        }
+    }
+}
+jar{
+    manifest{
+        attributes "Main-Class": "com.intelligrape.gradle.Application2"
+    }
+}
+
+---------------------------------------------------------------------------------------------------------
+
+3) add 2 files file1.xml and file1.txt in src/main/resources manually. make changes so that when creating jar only file1.xml is added to the jar.
+
+Ans. Files added and edited build.gradle as follow:
+
+apply plugin:'java'
+
+sourceSets {
+    main{
+        java{
+            srcDirs = ['src/main/java','src/main/java2']
+        }
+
+        resources{
+            srcDirs = ['src/main/resources']
+            exclude 'file1.txt'
+
+        }
+    }
+}
+jar{
+    manifest{
+        attributes "Main-Class": "com.intelligrape.gradle.Application2"
+    }
+}
+
+--------------------------------------------------------------------------------------------------------
+
+4) find how to what is an uberjar. Make changes so you can use commons lang3 StringUtil in your jar. Make this uber jar executable. The output should be text but that should be using the StringUtils class of commons lang3
+
+Ans. A fat jar (also known as uberjar) is a self-sufficient archive which contains both classes and dependencies needed to run an application.
+     To add the plugins-
+
+repositories {
+    maven { url "https://repo.maven.apache.org/maven2" }
+}
+
+dependencies{
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.8.1'
+}
+
+--------------------------------------------------------------------------------------------------------
+
+5) Find a maven repository and add it as a repository. You can use bintray, jcenter
+
+Ans. Edit following in build.gradle:
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven{
+        url "https://repo.maven.apache.org/maven2"
+    }
+}
+
+dependencies{
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.8.1'
+}
+
+------------------------------------------------------------------------------------------------------
+
+6) Write a task in file "mytasks.gradle" and use it in your build.gradle
+
+Ans. tasks.gradle:
+
+task hello  {
+    println "HELLO"
+}
+
+task greet {
+    println "WELCOME TO GRADLE"
+}
+
+task taskX(dependsOn: greet) {
+    println "taskX"
+}
+
+task taskY{
+    println "taskY"
+}
+
+taskY.dependsOn {
+    tasks.findAll {
+        task->task.name.startsWith("he")
+    }
+}
+
+greet.dependsOn hello
+
+build.gradle:
+
+apply from: "tasks.gradle"

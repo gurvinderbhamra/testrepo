@@ -1,0 +1,34 @@
+apply plugin:'java'
+apply from:"tasks.gradle"
+
+sourceSets {
+    main{
+        java{
+            srcDirs = ['src/main/java','src/main/java2']
+        }
+
+        resources{
+            srcDirs = ['src/main/resources']
+            exclude 'file1.txt'
+
+        }
+    }
+}
+
+jar{
+    manifest{
+        attributes "Main-Class": "com.intelligrape.gradle.Application2"
+    }
+}
+
+repositories{
+    mavenCentral()
+    jcenter()
+    maven {
+        url "https://repo.maven.apache.org/maven2" }
+
+}
+
+dependencies{
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.8.1'
+}

@@ -1,0 +1,24 @@
+
+task hello  {
+    println "HELLO"
+}
+
+task greet {
+    println "WELCOME TO GRADLE"
+}
+
+task taskX(dependsOn: greet) {
+    println "taskX"
+}
+
+task taskY{
+    println "taskY"
+}
+
+taskY.dependsOn {
+    tasks.findAll {
+        task->task.name.startsWith("he")
+    }
+}
+
+greet.dependsOn hello
