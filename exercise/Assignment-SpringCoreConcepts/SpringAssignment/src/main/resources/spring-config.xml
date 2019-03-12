@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="database" class="springCore.Database">
+        <constructor-arg name="port" value="databasePort"/>
+        <constructor-arg name="name" value="databaseName"/>
+
+        <property name="port" value="localhost"/>
+        <property name="name" value="8080"/>
+    </bean>
+
+    <bean id="tea" class="springCore.Tea"/>
+    <bean id="expressTea" class="springCore.ExpressTea"/>
+    <bean id="teaRestaurant" class="springCore.Restaurant" scope="prototype">
+        <property name="hotDrink" ref="tea"/>
+    </bean>
+
+    <bean id="teaRestaurant1" class="springCore.Restaurant" autowire="byType">
+        <constructor-arg ref="tea"/>
+        <property name="hotDrink" ref="tea"/>
+    </bean>
+    <bean id="teaRestaurant2" class="springCore.Restaurant" autowire="byName">
+        <constructor-arg ref="tea"/>
+        <property name="hotDrink" ref="tea"/>
+    </bean>
+    <bean id="teaRestaurant3" class="springCore.Restaurant" autowire="constructor">
+        <constructor-arg ref="tea"/>
+        <property name="hotDrink" ref="tea"/>
+    </bean>
+
+
+    <bean id="expressTeaRestaurant" class="springCore.Restaurant">
+        <property name="hotDrink">
+            <bean class="springCore.ExpressTea"/>
+        </property>
+    </bean>
+
+    <bean id="complexObject" class="springCore.Complex">
+        <property name="list">
+            <list>
+                <value>1</value>
+                <value>2</value>
+                <value>3</value>
+                <value>4</value>
+            </list>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="1" value="One"/>
+                <entry key="2" value="Two"/>
+            </map>
+        </property>
+        <property name="set">
+            <set>
+                <value>1</value>
+                <value>2</value>
+                <value>3</value>
+                <value>4</value>
+            </set>
+        </property>
+    </bean>
+</beans>
