@@ -1,2 +1,4 @@
-xyz.txt
+.idea**
+.gradle**
+out/
 
