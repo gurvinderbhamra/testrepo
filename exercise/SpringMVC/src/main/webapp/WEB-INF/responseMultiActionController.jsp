@@ -1,16 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
   User: ttn
-  Date: 15/3/19
-  Time: 3:51 PM
+  Date: 19/3/19
+  Time: 1:54 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Response MultiActionController</title>
 </head>
 <body>
-$END$
+    <b>This is response via httpServletResponse</b>
 </body>
 </html>
