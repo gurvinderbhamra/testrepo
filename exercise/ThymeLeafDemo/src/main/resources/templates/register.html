@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registered</title>
+    <style>
+        .rowStyle1{
+            background-color: brown;
+            color: white;
+        }
+        .rowStyle2{
+            background-color: chocolate;
+            color: white;
+        }
+    </style>
+
+</head>
+<body>
+    <h2>
+          <span th:include="~{header}"></span>
+    </h2>
+
+    <h3>
+        <span th:if="${employeeList.get(employeeList.size()-1).getIsAdmin()}">Hello Admin</span>
+        <span th:unless="${employeeList.get(employeeList.size()-1).getIsAdmin()}">Hi User</span>
+    </h3>
+    <table style="border: 1px solid black">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Admin</th>
+            <th>Employee Type</th>
+        </tr>
+        <tr th:each="employee, rowNum : ${employeeList}" th:class="${rowNum.even} ? 'rowStyle1' : 'rowStyle2'">
+            <td>
+                <span th:text="${employee.getName()}"/>
+            </td>
+            <td>
+                <span th:text="${employee.getAge()}"/>
+            </td>
+            <td>
+                <span th:text="${employee.getAddress()}"/>
+            </td>
+            <td>
+                <span th:text="${employee.getPhone()}"/>
+            </td>
+            <td>
+                <span th:text="${employee.getIsAdmin()}"/>
+            </td>
+            <td>
+                <span th:text="${employee.getEmployeesType()}"/>
+            </td>
+        </tr>
+    </table>
+    <p th:include="~{footer}"></p>
+</body>
+</html>

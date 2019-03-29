@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Time</title>
+    <script
+    src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+
+
+</head>
+<body id="divTime">
+<script>
+    $(document).ready(function(){
+        function time(){
+            $.ajax({
+                url: "/showTime",
+                method: "GET",
+                timeout: 1000,
+                success: function(data){
+                    $("#divTime").html(data);
+                    window.setTimeout(time, 1000);
+                }
+            });
+        }
+        time();
+    });
+</script>
+    <h4>
+        Hi this page is used to show time using ajax call.
+    </h4>
+    <div></div>
+</body>
+</html>
