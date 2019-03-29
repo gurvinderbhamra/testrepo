@@ -93,7 +93,7 @@ public class Main {
         variousOperations(personRepository);
 
         System.out.println("\n\nSort persons by id with age > 25 : ");
-        List<Person> personList2 = personRepository.sortById();
+        List<Person> personList2 = personRepository.findByAgeGreaterThanOrderByIdDesc(20);
         printPersonList(personList2);
 
         System.out.println("\n\nUsing sort function:");
